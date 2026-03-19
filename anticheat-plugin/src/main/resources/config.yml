@@ -1,0 +1,140 @@
+general:
+  server-id: "default-server"
+  debug: false
+  log-violations: true
+
+cloud:
+  enabled: false
+  api-url: "https://api.example.com/anticheat"
+  api-key: ""
+  sync-interval: 300
+
+discord:
+  enabled: false
+  webhook-url: ""
+  mention-role: ""
+
+mitigation:
+  thresholds:
+    Speed: 10.0
+    Fly: 10.0
+    NoFall: 5.0
+    Step: 8.0
+    Phase: 8.0
+    Velocity: 6.0
+    Reach: 6.0
+    KillAura: 8.0
+    Aimbot: 8.0
+    AutoClicker: 10.0
+    Critical: 5.0
+    NoSlow: 6.0
+    Scaffold: 8.0
+    Timer: 8.0
+    FastUse: 5.0
+    BadPackets: 5.0
+    InvalidRotation: 1.0
+  actions:
+    Speed: "RUBBERBAND"
+    Fly: "RUBBERBAND"
+    NoFall: "MONITOR"
+    Step: "RUBBERBAND"
+    Phase: "RUBBERBAND"
+    Velocity: "MONITOR"
+    Reach: "LIMIT_REACH"
+    KillAura: "FLAG_FOR_BAN"
+    Aimbot: "FLAG_FOR_BAN"
+    AutoClicker: "LIMIT_CPS"
+    Critical: "MONITOR"
+    NoSlow: "SLOW_MOVEMENT"
+    Scaffold: "FLAG_FOR_BAN"
+    Timer: "RUBBERBAND"
+    FastUse: "MONITOR"
+    BadPackets: "RUBBERBAND"
+    InvalidRotation: "RUBBERBAND"
+
+checks:
+  Speed:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 20.0
+    decay-rate: 0.05
+  Fly:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 20.0
+    decay-rate: 0.05
+  NoFall:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.1
+  Step:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 15.0
+    decay-rate: 0.1
+  Phase:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 15.0
+    decay-rate: 0.1
+  Velocity:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.1
+  Reach:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.2
+  KillAura:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 15.0
+    decay-rate: 0.1
+  Aimbot:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 15.0
+    decay-rate: 0.1
+  AutoClicker:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 20.0
+    decay-rate: 0.05
+  Critical:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.2
+  NoSlow:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.1
+  Scaffold:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 15.0
+    decay-rate: 0.05
+  Timer:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 15.0
+    decay-rate: 0.1
+  FastUse:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.2
+  BadPackets:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 10.0
+    decay-rate: 0.1
+  InvalidRotation:
+    enabled: true
+    sensitivity: 1.0
+    max-violations: 5.0
+    decay-rate: 0.5
