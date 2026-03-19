@@ -1,0 +1,32 @@
+name: anti
+version: 1.0.0
+main: com.anticheat.AnticheatPlugin
+api-version: 1.20
+description: Advanced Minecraft anticheat with AI integration
+author: anti
+depend:
+  - ProtocolLib
+
+commands:
+  ac:
+    description: Main anticheat command
+    usage: /ac <subcommand>
+    permission: anticheat.use
+  alerts:
+    description: Toggle anticheat alerts
+    usage: /alerts
+    permission: anticheat.alerts
+
+permissions:
+  anticheat.use:
+    description: Basic anticheat command access
+    default: op
+  anticheat.alerts:
+    description: Receive anticheat alerts
+    default: op
+  anticheat.staff:
+    description: View player violation levels
+    default: op
+  anticheat.admin:
+    description: Full admin access
+    default: op
