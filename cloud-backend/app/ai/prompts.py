@@ -35,7 +35,7 @@ Consider:
 - Interval stddev: legitimate clicking has stddev >15ms; perfect autoclickers <5ms
 - Kurtosis/skewness: human clicking is right-skewed with positive kurtosis
 - Shannon entropy of inter-click intervals: low entropy (<2.0 bits) suggests automation
-- Butterfly clicking: two fingers alternating ~200-400 CPS bursts, bimodal distribution
+- Butterfly clicking: two fingers alternating, produces ~15-25 CPS with bimodal interval distribution
 - Jitter clicking: rapid vibrations, intervals cluster near 50ms with high variance
 - Drag clicking: long sustained high-CPS streaks (20-30+ CPS), unique friction signature
 - Autocorrelation at lag-1: strong positive correlation suggests timer-based automation

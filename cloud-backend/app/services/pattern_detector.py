@@ -211,7 +211,7 @@ class PatternDetector:
             score += 0.3
             flags.append("KILLAURA_HIGH_HIT_RATE")
 
-        if pitch_near_zero_ratio > 0.7 and len(pitches) >= 10:
+        if pitch_near_zero_ratio > 0.7 and len(abs_pitch_to_target) >= 10:
             score += 0.2
             flags.append("AIMBOT_PITCH_LOCK")
 

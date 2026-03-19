@@ -19,6 +19,23 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/players", tags=["players"])
 
 
+@router.get("/search", response_model=list[PlayerProfile])
+async def search_players(
+    q: str = Query(min_length=2, max_length=32),
+    limit: int = Query(default=20, ge=1, le=100),
+    db: AsyncSession = Depends(get_db),
+):
+    """Search players by username (case-insensitive prefix match)."""
+    result = await db.execute(
+        select(Player)
+        .where(Player.username.ilike(f"%{q}%"))
+        .order_by(Player.last_seen.desc())
+        .limit(limit)
+    )
+    players = result.scalars().all()
+    return [PlayerProfile.model_validate(p) for p in players]
+
+
 @router.get("/{uuid}", response_model=PlayerWithHistory)
 async def get_player(uuid: str, db: AsyncSession = Depends(get_db)):
     """Return a player's profile and their 10 most recent analyses."""
@@ -77,23 +94,6 @@ async def list_player_analyses(
         page_size=page_size,
         pages=pages,
     )
-
-
-@router.get("/search", response_model=list[PlayerProfile])
-async def search_players(
-    q: str = Query(min_length=2, max_length=32),
-    limit: int = Query(default=20, ge=1, le=100),
-    db: AsyncSession = Depends(get_db),
-):
-    """Search players by username (case-insensitive prefix match)."""
-    result = await db.execute(
-        select(Player)
-        .where(Player.username.ilike(f"%{q}%"))
-        .order_by(Player.last_seen.desc())
-        .limit(limit)
-    )
-    players = result.scalars().all()
-    return [PlayerProfile.model_validate(p) for p in players]
 
 
 # ------------------------------------------------------------------
